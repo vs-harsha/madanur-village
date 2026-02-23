@@ -16,7 +16,7 @@ export const galleryImages = [
   { src: "/images/gallery-3.png", label: "Village Streets" },
   { src: "/images/gallery-4.png", label: "Sunrise View" },
   { src: "/images/gallery-5.png", label: "Community Gathering" },
-  { src: "/images/gallery-6.jpg", label: "Fields of Madanur" },
+  { src: "/images/gallery-6.png", label: "Fields of Madanur" },
 ];
 
 // ─── TEMPLE ──────────────────────────────────────────────────────────
