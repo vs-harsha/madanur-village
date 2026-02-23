@@ -1,6 +1,7 @@
 // src/pages/Festivals.jsx
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { festivalsHeroImage } from "../assets/images";
 
 const FESTIVALS = [
   {
@@ -49,30 +50,30 @@ const FESTIVALS = [
 
 export default function Festivals() {
   return (
-    <div className="min-h-screen bg-earth-950 text-earth-100">
+    <div className="min-h-screen bg-earth-50 text-gray-900">
       <Navbar />
 
       {/* Hero */}
       <section
         className="relative h-64 md:h-80 flex items-end overflow-hidden"
         style={{
-          backgroundImage: "url('/images/festivals-hero.jpg')",
+          backgroundImage: `url('${festivalsHeroImage}')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundColor: "#3d1f08",
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-t from-earth-950 via-black/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
         <div className="relative max-w-6xl mx-auto px-6 pb-10 w-full">
-          <p className="font-body text-earth-400 text-xs uppercase tracking-[0.3em] mb-2">Culture & Celebration</p>
-          <h1 className="font-display text-4xl sm:text-5xl font-bold text-earth-50">Festivals of Madanur</h1>
+          <p className="font-body text-amber-300 text-xs uppercase tracking-[0.3em] mb-2">Culture &amp; Celebration</p>
+          <h1 className="font-display text-4xl sm:text-5xl font-bold text-white">Festivals of Madanur</h1>
         </div>
       </section>
 
       {/* Intro */}
-      <section className="py-12 px-6 bg-earth-900">
+      <section className="py-12 px-6 bg-white">
         <div className="max-w-3xl mx-auto text-center">
-          <p className="font-body text-earth-300 text-base leading-relaxed">
+          <p className="font-body text-gray-600 text-base leading-relaxed">
             Throughout the year, Madanur comes alive with colour, devotion, and community spirit.
             Every festival is an occasion that unites families, neighbours, and returning sons and daughters of the village.
           </p>
@@ -84,15 +85,15 @@ export default function Festivals() {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {FESTIVALS.map(({ emoji, name, month, desc, highlight }) => (
-              <div key={name} className="group bg-earth-900/70 border border-earth-800/50 hover:border-earth-600/60 rounded-2xl p-7 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+              <div key={name} className="group bg-white border border-gray-200 hover:border-earth-300 rounded-2xl p-7 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                 <div className="text-4xl mb-4">{emoji}</div>
-                <h3 className="font-display text-xl font-bold text-earth-50 mb-1">{name}</h3>
-                <p className="font-body text-earth-400 text-xs uppercase tracking-widest mb-4">{month}</p>
-                <div className="w-10 h-0.5 bg-gradient-to-r from-earth-400 to-amber-500 mb-4" />
-                <p className="font-body text-earth-300 text-sm leading-relaxed mb-4">{desc}</p>
-                <div className="inline-flex items-center gap-2 bg-earth-800/60 border border-earth-700/40 rounded-full px-3 py-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-earth-400" />
-                  <span className="font-body text-earth-400 text-xs">{highlight}</span>
+                <h3 className="font-display text-xl font-bold text-gray-900 mb-1">{name}</h3>
+                <p className="font-body text-earth-500 text-xs uppercase tracking-widest mb-4">{month}</p>
+                <div className="w-10 h-0.5 bg-earth-500 mb-4" />
+                <p className="font-body text-gray-600 text-sm leading-relaxed mb-4">{desc}</p>
+                <div className="inline-flex items-center gap-2 bg-earth-50 border border-earth-200 rounded-full px-3 py-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-earth-500" />
+                  <span className="font-body text-earth-600 text-xs">{highlight}</span>
                 </div>
               </div>
             ))}

@@ -10,6 +10,8 @@ import Admin      from "./pages/Admin";
 import Temple     from "./pages/Temple";
 import Festivals  from "./pages/Festivals";
 import Businesses from "./pages/Businesses";
+import Spots      from "./pages/Spots";
+import History    from "./pages/History";
 
 export default function App() {
   return (
@@ -20,6 +22,8 @@ export default function App() {
           <Route path="/signup"     element={<Signup />}     />
           <Route path="/"           element={<Home />}       />
           <Route path="/temple"     element={<Temple />}     />
+          <Route path="/spots"      element={<Spots />}      />
+          <Route path="/history"    element={<History />}    />
           <Route path="/festivals"  element={<Festivals />}  />
           <Route path="/businesses" element={<Businesses />} />
           <Route path="/admin"      element={<ProtectedRoute><Admin /></ProtectedRoute>} />

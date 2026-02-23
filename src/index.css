@@ -8,13 +8,13 @@
   }
 
   body {
-    @apply bg-earth-950 text-earth-100 antialiased;
+    @apply bg-earth-50 text-earth-900 antialiased;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   ::selection {
-    @apply bg-earth-400/30 text-earth-50;
+    @apply bg-earth-500/20 text-earth-900;
   }
 
   /* Custom scrollbar */
@@ -23,13 +23,13 @@
     height: 6px;
   }
   ::-webkit-scrollbar-track {
-    @apply bg-earth-900;
+    @apply bg-earth-100;
   }
   ::-webkit-scrollbar-thumb {
-    @apply bg-earth-700 rounded-full;
+    @apply bg-earth-300 rounded-full;
   }
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-earth-600;
+    @apply bg-earth-400;
   }
 }
 
