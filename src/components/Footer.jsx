@@ -59,6 +59,7 @@ export default function Footer() {
 
         <div className="h-px bg-gray-700 mb-4" />
         <p className="font-body text-gray-500 text-xs text-center">{T.footer_copy}</p>
+        <p className="font-body text-gray-600 text-xs text-center mt-1">Developed by Nallapareddy's</p>
       </div>
     </footer>
   );
