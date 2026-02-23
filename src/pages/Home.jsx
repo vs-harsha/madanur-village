@@ -136,7 +136,7 @@ export default function Home() {
               { value: "~3,000",   label: "Population",       icon: "👥" },
               { value: "1",        label: "Ancient Temple",   icon: "🛕" },
               { value: "∞",        label: "Acres of Fields",  icon: "🌾" },
-              { value: "100%",     label: "Village Pride",    icon: "💚" },
+              { value: "100%",     label: "Village Pride",    icon: "�" },
             ].map(({ value, label, icon }) => (
               <div key={label} className="group">
                 <div className="text-3xl mb-2">{icon}</div>
@@ -145,6 +145,60 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ─── PHOTO GALLERY ─── */}
+      <section className="py-20 px-6 bg-earth-900/10">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-14">
+            <p className="font-body text-earth-500 text-xs uppercase tracking-[0.25em] mb-3">Memories</p>
+            <h2 className="font-display text-4xl sm:text-5xl font-bold text-earth-100 mb-4">
+              Village Gallery
+            </h2>
+            <div className="w-16 h-0.5 bg-gradient-to-r from-earth-600 to-amber-500 mx-auto" />
+            <p className="font-body text-earth-500 mt-4 text-sm max-w-md mx-auto">
+              A glimpse into the life, culture, and beauty of Madanur.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {[
+              { src: "/images/gallery-1.jpg", label: "Temple Festival" },
+              { src: "/images/gallery-2.jpg", label: "Harvest Season" },
+              { src: "/images/gallery-3.jpg", label: "Village Streets" },
+              { src: "/images/gallery-4.jpg", label: "Sunrise View" },
+              { src: "/images/gallery-5.jpg", label: "Community Gathering" },
+              { src: "/images/gallery-6.jpg", label: "Fields of Madanur" },
+            ].map(({ src, label }, i) => (
+              <div key={i} className="group relative overflow-hidden rounded-2xl aspect-square bg-earth-900/60 border border-earth-700/40 hover:border-earth-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-earth-900/50">
+                <img
+                  src={src}
+                  alt={label}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
+                />
+                {/* Placeholder shown when image missing */}
+                <div className="absolute inset-0 hidden flex-col items-center justify-center gap-3 bg-earth-900/60">
+                  <span className="text-4xl opacity-30">🖼️</span>
+                  <p className="font-body text-earth-600 text-xs text-center px-4">{label}</p>
+                  {isAdmin && (
+                    <p className="font-body text-earth-700 text-xs text-center px-4">Add <code className="text-earth-600">public/images/gallery-{i+1}.jpg</code></p>
+                  )}
+                </div>
+                {/* Label overlay */}
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-earth-950/90 to-transparent p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                  <p className="font-body text-earth-200 text-sm font-semibold">{label}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {isAdmin && (
+            <p className="text-center font-body text-earth-700 text-xs mt-8">
+              💡 To add photos: put images named <code className="text-earth-600">gallery-1.jpg</code> through <code className="text-earth-600">gallery-6.jpg</code> in the <code className="text-earth-600">public/images/</code> folder, then push to GitHub.
+            </p>
+          )}
         </div>
       </section>
 
