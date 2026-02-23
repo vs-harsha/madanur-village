@@ -140,7 +140,8 @@ export default function Home() {
                   <p className="font-body text-white text-sm font-semibold">{label}</p>
                 </div>
               </div>
-            ))}
+            );
+            })}
           </div>
           {isAdmin && (
             <p className="text-center font-body text-earth-400 text-xs mt-8">
