@@ -20,8 +20,8 @@ export const galleryImages = [
 ];
 
 // ─── TEMPLE ──────────────────────────────────────────────────────────
-export const templeHeroImage   = "/images/temple.png";
-export const templeMainImage   = "/images/temple.png";
+export const templeHeroImage   = "/images/temple.jpg";
+export const templeMainImage   = "/images/temple.jpg";
 
 export const templeGalleryImages = [
   "/images/temple-1.jpg",
