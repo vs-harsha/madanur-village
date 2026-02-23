@@ -1,6 +1,7 @@
 ﻿// src/App.jsx
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
+import { LanguageProvider } from "./context/LanguageContext";
 import ProtectedRoute   from "./components/ProtectedRoute";
 
 import Login      from "./pages/Login";
@@ -16,7 +17,8 @@ import History    from "./pages/History";
 export default function App() {
   return (
     <BrowserRouter>
-      <AuthProvider>
+      <LanguageProvider>
+        <AuthProvider>
         <Routes>
           <Route path="/login"      element={<Login />}      />
           <Route path="/signup"     element={<Signup />}     />
@@ -29,7 +31,8 @@ export default function App() {
           <Route path="/admin"      element={<ProtectedRoute><Admin /></ProtectedRoute>} />
           <Route path="*"           element={<Navigate to="/" replace />} />
         </Routes>
-      </AuthProvider>
+        </AuthProvider>
+      </LanguageProvider>
     </BrowserRouter>
   );
 }

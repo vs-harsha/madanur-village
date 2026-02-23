@@ -2,46 +2,40 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { historyHeroImage } from "../assets/images";
+import { useLanguage } from "../context/LanguageContext";
+import { t } from "../assets/translations";
 
-const TIMELINE = [
-  {
-    era: "Ancient Era",
-    period: "~1000 BCE – 12th Century",
-    icon: "🏛️",
-    heading: "Origins & Sacred Land",
-    body: "The land of Madanur has been inhabited since ancient times. Local lore traces it to the Ramayana era — Lord Rama is believed to have passed through this region on his journey south. The construction of the Sri RamaLingeswaraSwamy Temple, dedicated to Lord Shiva with a unique sand Lingam made by Lord Rama himself, marks the earliest recorded chapter of the village's sacred history.",
-  },
-  {
-    era: "Medieval Period",
-    period: "13th – 17th Century",
-    icon: "⚔️",
-    heading: "Under the Kingdoms",
-    body: "During the rule of the Kakatiya and later the Vijayanagara Empire, Madanur was part of a prosperous agricultural belt in the Prakasam region. The fertile Krishna-tributary plains supported large farming communities. The temple was expanded during this period, becoming an important pilgrimage centre for devotees from surrounding villages and mandals.",
-  },
-  {
-    era: "Colonial Era",
-    period: "18th – 19th Century",
-    icon: "📜",
-    heading: "Life Under British Rule",
-    body: "Madanur fell under the Nizam's dominion and later came under the Madras Presidency during British rule. The village economy was largely agrarian — paddy, groundnut, and pulses. Village records from this period mention community wells, a thriving weekly market, and the temple as the social and spiritual centre of life.",
-  },
-  {
-    era: "Post Independence",
-    period: "1947 – 1990s",
-    icon: "🇮🇳",
-    heading: "A New Chapter",
-    body: "Following Indian independence, Madanur became part of the Prakasam District in Andhra Pradesh. Land reforms transformed the agricultural landscape. A primary school was established, and electrification brought new opportunities to the village. The younger generation began accessing higher education, while maintaining deep roots in village tradition.",
-  },
-  {
-    era: "Modern Era",
-    period: "2000s – Present",
-    icon: "🌐",
-    heading: "Community & Progress",
-    body: "Today Madanur is a thriving rural community with improved road connectivity, primary healthcare, and growing digital access. Sons and daughters of the village have spread across India and the world, yet Maha Shivaratri and Sankranti still bring thousands home. The village holds its identity while embracing the future.",
-  },
-];
+const TIMELINE_BODIES = {
+  en: [
+    "The land of Madanur has been inhabited since ancient times. Local lore traces it to the Ramayana era — Lord Rama is believed to have passed through this region on his journey south. The construction of the Sri RamaLingeswaraSwamy Temple, with a unique sand Lingam made by Lord Rama himself, marks the earliest recorded chapter of the village's sacred history.",
+    "During the rule of the Kakatiya and later the Vijayanagara Empire, Madanur was part of a prosperous agricultural belt in the Prakasam region. The temple was expanded during this period, becoming an important pilgrimage centre for devotees from surrounding villages.",
+    "Madanur fell under the Nizam's dominion and later came under the Madras Presidency during British rule. The village economy was largely agrarian — paddy, groundnut, and pulses. Village records mention community wells, a thriving weekly market, and the temple as the social and spiritual centre of life.",
+    "Following Indian independence, Madanur became part of Prakasam District in Andhra Pradesh. Land reforms transformed the agricultural landscape. A primary school was established, and electrification brought new opportunities to the village.",
+    "Today Madanur is a thriving rural community with improved road connectivity, primary healthcare, and growing digital access. Sons and daughters of the village have spread across India and the world, yet Maha Shivaratri and Sankranti still bring thousands home.",
+  ],
+  te: [
+    "మదనూరు భూమి పురాతన కాలం నుండి నివాసంగా ఉంది. రామాయణ కాలంతో ముడిపడిన స్థానిక పురాణాల ప్రకారం, శ్రీ రాముడు తన చేతులతో ఇసుకతో లింగం తయారు చేసి శివుడికి పూజ చేసిన చోటుగా శ్రీ రామలింగేశ్వర స్వామి దేవాలయం నిర్మించబడింది.",
+    "కాకతీయ మరియు విజయనగర సామ్రాజ్యాల పాలనలో మదనూరు సమృద్ధమైన వ్యవసాయ పట్టాలో భాగంగా ఉండేది. ఈ కాలంలో దేవాలయం విస్తరించి, చుట్టుపక్కల గ్రామాల భక్తులకు ముఖ్యమైన తీర్థయాత్ర కేంద్రంగా మారింది.",
+    "మదనూరు నిజాం అధికార పరిధిలోకి, ఆ తర్వాత బ్రిటీష్ పాలనలో మద్రాసు ప్రెసిడెన్సీలోకి వచ్చింది. గ్రామ ఆర్థిక వ్యవస్థ ముఖ్యంగా వ్యవసాయాధారితం — వరి, వేరుశనగ మరియు పప్పులు.",
+    "భారత స్వాతంత్ర్యం తర్వాత, మదనూరు ఆంధ్రప్రదేశ్‌లోని ప్రకాశం జిల్లాలో భాగం అయింది. ప్రాథమిక పాఠశాల స్థాపించబడింది, విద్యుత్ సౌకర్యాలు కొత్త అవకాశాలను తెచ్చాయి.",
+    "నేడు మదనూరు మెరుగైన రోడ్డు సంపర్కం, ఆరోగ్య సేవలు మరియు డిజిటల్ ప్రవేశంతో అభివృద్ధి చెందుతున్న గ్రామీణ సమాజం. మహా శివరాత్రి మరియు సంక్రాంతి వేలాది మందిని ఇంటికి తీసుకొస్తాయి.",
+  ],
+};
+
+const ICONS = ["🏛️", "⚔️", "📜", "🇮🇳", "🌐"];
 
 export default function History() {
+  const { lang } = useLanguage();
+  const T = t[lang];
+
+  const TIMELINE = [0, 1, 2, 3, 4].map((i) => ({
+    era:     T[`history_${i}_era`],
+    period:  T[`history_${i}_period`],
+    icon:    ICONS[i],
+    heading: T[`history_${i}_heading`],
+    body:    TIMELINE_BODIES[lang][i],
+  }));
+
   return (
     <div className="min-h-screen bg-earth-50 text-gray-900">
       <Navbar />
@@ -58,21 +52,18 @@ export default function History() {
       >
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
         <div className="relative max-w-6xl mx-auto px-6 pb-10 w-full">
-          <p className="font-body text-amber-300 text-xs uppercase tracking-[0.3em] mb-2">Heritage</p>
-          <h1 className="font-display text-4xl sm:text-5xl font-bold text-white">History of Madanur</h1>
+          <p className="font-body text-amber-300 text-xs uppercase tracking-[0.3em] mb-2">{T.history_badge}</p>
+          <h1 className="font-display text-4xl sm:text-5xl font-bold text-white">{T.history_hero_title}</h1>
         </div>
       </section>
 
       {/* Intro */}
       <section className="py-14 px-6 bg-white border-b border-gray-100">
         <div className="max-w-3xl mx-auto text-center">
-          <p className="font-body text-earth-500 text-xs uppercase tracking-[0.25em] mb-3">Our Story</p>
-          <h2 className="font-display text-3xl font-bold text-gray-900 mb-4">Centuries of Heritage</h2>
+          <p className="font-body text-earth-500 text-xs uppercase tracking-[0.25em] mb-3">{T.history_label}</p>
+          <h2 className="font-display text-3xl font-bold text-gray-900 mb-4">{T.history_title}</h2>
           <div className="w-12 h-0.5 bg-earth-500 mx-auto mb-5" />
-          <p className="font-body text-gray-600 text-base leading-relaxed">
-            Madanur's story spans thousands of years — from sacred Ramayana legends and ancient kingdoms,
-            through the colonial period, to independence and the vibrant community of today.
-          </p>
+          <p className="font-body text-gray-600 text-base leading-relaxed">{T.history_body}</p>
         </div>
       </section>
 
@@ -115,10 +106,10 @@ export default function History() {
         <div className="max-w-2xl mx-auto text-center">
           <div className="text-5xl mb-5">📖</div>
           <blockquote className="font-display text-xl sm:text-2xl text-gray-700 italic leading-relaxed mb-4">
-            "A village is not just a place — it is a living memory, passed from one generation to the next."
+            {T.history_quote}
           </blockquote>
-          <p className="font-telugu text-earth-500 text-base">మన గ్రామం — మన గర్వం</p>
-          <p className="font-body text-gray-400 text-sm mt-1">Our village — our pride</p>
+          <p className="font-telugu text-earth-500 text-base">{T.history_telugu}</p>
+          <p className="font-body text-gray-400 text-sm mt-1">{T.history_translation}</p>
         </div>
       </section>
 

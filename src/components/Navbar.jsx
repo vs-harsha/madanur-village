@@ -2,12 +2,16 @@
 import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { useLanguage } from "../context/LanguageContext";
+import { t } from "../assets/translations";
 
 export default function Navbar() {
   const { user, logout, isAdmin } = useAuth();
   const navigate  = useNavigate();
   const location  = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
+  const { lang, toggle } = useLanguage();
+  const T = t[lang];
 
   const handleLogout = async () => { await logout(); navigate("/login"); };
 
@@ -40,21 +44,29 @@ export default function Navbar() {
 
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-7">
-            {navLink("/", "Home")}
-            {navLink("/temple", "Temple")}
-            {navLink("/spots", "Spots")}
-            {navLink("/history", "History")}
-            {navLink("/festivals", "Festivals")}
-            {navLink("/businesses", "Businesses")}
+            {navLink("/",           T.nav_home)}
+            {navLink("/temple",     T.nav_temple)}
+            {navLink("/spots",      T.nav_spots)}
+            {navLink("/history",    T.nav_history)}
+            {navLink("/festivals",  T.nav_festivals)}
+            {navLink("/businesses", T.nav_businesses)}
           </div>
 
-          {/* Auth area */}
+          {/* Auth + Language area */}
           <div className="hidden md:flex items-center gap-3">
+            {/* Language toggle */}
+            <button
+              onClick={toggle}
+              title={lang === "en" ? "Switch to Telugu" : "Switch to English"}
+              className="text-xs font-semibold border border-gray-300 hover:border-earth-500 hover:text-earth-600 text-gray-600 px-2.5 py-1 rounded-md transition-all"
+            >
+              {lang === "en" ? "తె" : "EN"}
+            </button>
             {user ? (
               <>
                 {isAdmin && (
                   <Link to="/admin" className="text-earth-500 font-body text-sm hover:text-earth-600 transition-colors">
-                    ⚡ Admin
+                    {T.nav_admin_link}
                   </Link>
                 )}
                 <span className="text-gray-600 text-sm font-body">{user.displayName || user.email}</span>
@@ -62,7 +74,7 @@ export default function Navbar() {
                   onClick={handleLogout}
                   className="text-sm font-body text-gray-700 border border-gray-300 hover:border-earth-500 hover:text-earth-500 px-4 py-1.5 rounded-md transition-all"
                 >
-                  Logout
+                  {T.nav_logout}
                 </button>
               </>
             ) : (
@@ -70,7 +82,7 @@ export default function Navbar() {
                 to="/login"
                 className="bg-earth-500 hover:bg-earth-600 text-white font-body font-semibold text-sm px-5 py-2 rounded-md transition-all shadow-sm"
               >
-                Admin Login
+                {T.nav_admin}
               </Link>
             )}
           </div>
@@ -89,12 +101,19 @@ export default function Navbar() {
         {/* Mobile menu */}
         {menuOpen && (
           <div className="md:hidden pb-4 flex flex-col gap-4 border-t border-gray-100 pt-4">
-            {navLink("/", "Home")}
-            {navLink("/temple", "Temple")}
-            {navLink("/spots", "Spots")}
-            {navLink("/history", "History")}
-            {navLink("/festivals", "Festivals")}
-            {navLink("/businesses", "Businesses")}
+            {navLink("/",           T.nav_home)}
+            {navLink("/temple",     T.nav_temple)}
+            {navLink("/spots",      T.nav_spots)}
+            {navLink("/history",    T.nav_history)}
+            {navLink("/festivals",  T.nav_festivals)}
+            {navLink("/businesses", T.nav_businesses)}
+            {/* Language toggle mobile */}
+            <button
+              onClick={toggle}
+              className="text-left text-xs font-semibold border border-gray-300 text-gray-600 px-3 py-1.5 rounded-md w-fit"
+            >
+              {lang === "en" ? "తెలుగులో చదవండి" : "Read in English"}
+            </button>
             {user ? (
               <>
                 {isAdmin && navLink("/admin", "⚡ Admin Panel")}
@@ -106,7 +125,7 @@ export default function Navbar() {
                 onClick={() => setMenuOpen(false)}
                 className="bg-earth-500 text-white font-body text-sm font-semibold px-4 py-2 rounded-md text-center"
               >
-                Admin Login
+                {T.nav_admin}
               </Link>
             )}
           </div>

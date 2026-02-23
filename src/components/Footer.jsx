@@ -1,7 +1,17 @@
 // src/components/Footer.jsx
 import { Link } from "react-router-dom";
+import { useLanguage } from "../context/LanguageContext";
+import { t } from "../assets/translations";
 
 export default function Footer() {
+  const { lang } = useLanguage();
+  const T = t[lang];
+
+  const links = [
+    ["/", T.nav_home], ["/temple", T.nav_temple], ["/spots", T.nav_spots],
+    ["/history", T.nav_history], ["/festivals", T.nav_festivals], ["/businesses", T.nav_businesses],
+  ];
+
   return (
     <footer className="bg-gray-900 text-gray-300 py-12 mt-0">
       <div className="max-w-6xl mx-auto px-6">
@@ -18,16 +28,9 @@ export default function Footer() {
 
           {/* Quick links */}
           <div>
-            <p className="font-body font-semibold text-white text-xs uppercase tracking-widest mb-3">Explore</p>
+            <p className="font-body font-semibold text-white text-xs uppercase tracking-widest mb-3">{T.footer_explore}</p>
             <div className="flex flex-col gap-2">
-              {[
-                ["/", "Home"],
-                ["/temple", "Temple"],
-                ["/spots", "Spots"],
-                ["/history", "History"],
-                ["/festivals", "Festivals"],
-                ["/businesses", "Businesses"],
-              ].map(([to, label]) => (
+              {links.map(([to, label]) => (
                 <Link key={to} to={to} className="font-body text-gray-400 text-sm hover:text-earth-500 transition-colors">
                   {label}
                 </Link>
@@ -37,16 +40,14 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <p className="font-body font-semibold text-white text-xs uppercase tracking-widest mb-3">Village Info</p>
-            <p className="font-body text-gray-400 text-sm">Madanur, Kandukur Mandal</p>
-            <p className="font-body text-gray-400 text-sm">Prakasam District, AP — 523 105</p>
+            <p className="font-body font-semibold text-white text-xs uppercase tracking-widest mb-3">{T.footer_info}</p>
+            <p className="font-body text-gray-400 text-sm">{T.footer_address}</p>
+            <p className="font-body text-gray-400 text-sm">{T.footer_pin}</p>
           </div>
         </div>
 
         <div className="h-px bg-gray-700 mb-4" />
-        <p className="font-body text-gray-500 text-xs text-center">
-          © {new Date().getFullYear()} Madanur Village. Made with 🧡 for our community.
-        </p>
+        <p className="font-body text-gray-500 text-xs text-center">{T.footer_copy}</p>
       </div>
     </footer>
   );

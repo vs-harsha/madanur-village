@@ -1,9 +1,23 @@
 // src/pages/Spots.jsx
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { spotsHeroImage, spotImages } from "../assets/images";
+import { spotsHeroImage } from "../assets/images";
+import { useLanguage } from "../context/LanguageContext";
+import { t } from "../assets/translations";
 
 export default function Spots() {
+  const { lang } = useLanguage();
+  const T = t[lang];
+
+  const spots = [
+    { src: "/images/spot-1.jpg", label: T.spot_1_label, desc: T.spot_1_desc },
+    { src: "/images/spot-2.jpg", label: T.spot_2_label, desc: T.spot_2_desc },
+    { src: "/images/spot-3.jpg", label: T.spot_3_label, desc: T.spot_3_desc },
+    { src: "/images/spot-4.jpg", label: T.spot_4_label, desc: T.spot_4_desc },
+    { src: "/images/spot-5.jpg", label: T.spot_5_label, desc: T.spot_5_desc },
+    { src: "/images/spot-6.jpg", label: T.spot_6_label, desc: T.spot_6_desc },
+  ];
+
   return (
     <div className="min-h-screen bg-earth-50 text-gray-900">
       <Navbar />
@@ -20,21 +34,18 @@ export default function Spots() {
       >
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
         <div className="relative max-w-6xl mx-auto px-6 pb-10 w-full">
-          <p className="font-body text-amber-300 text-xs uppercase tracking-[0.3em] mb-2">Natural Beauty</p>
-          <h1 className="font-display text-4xl sm:text-5xl font-bold text-white">Beautiful Spots</h1>
+          <p className="font-body text-amber-300 text-xs uppercase tracking-[0.3em] mb-2">{T.spots_badge}</p>
+          <h1 className="font-display text-4xl sm:text-5xl font-bold text-white">{T.spots_hero_title}</h1>
         </div>
       </section>
 
       {/* Intro */}
       <section className="py-12 px-6 bg-white border-b border-gray-100">
         <div className="max-w-3xl mx-auto text-center">
-          <p className="font-body text-earth-500 text-xs uppercase tracking-[0.25em] mb-3">Explore</p>
-          <h2 className="font-display text-3xl font-bold text-gray-900 mb-4">Places to See in Madanur</h2>
+          <p className="font-body text-earth-500 text-xs uppercase tracking-[0.25em] mb-3">{T.spots_section_label}</p>
+          <h2 className="font-display text-3xl font-bold text-gray-900 mb-4">{T.spots_section_title}</h2>
           <div className="w-12 h-0.5 bg-earth-500 mx-auto mb-5" />
-          <p className="font-body text-gray-600 text-base leading-relaxed">
-            From the serene temple stepwell to golden paddy fields, Madanur holds quiet beauty in every corner.
-            Explore the spots that make our village unforgettable.
-          </p>
+          <p className="font-body text-gray-600 text-base leading-relaxed">{T.spots_section_body}</p>
         </div>
       </section>
 
@@ -42,7 +53,7 @@ export default function Spots() {
       <section className="py-16 px-6 bg-earth-50">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
-            {spotImages.map(({ src, label, desc }, i) => (
+            {spots.map(({ src, label, desc }, i) => (
               <div
                 key={i}
                 className="group bg-white border border-gray-200 hover:border-earth-300 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
@@ -82,12 +93,8 @@ export default function Spots() {
       <section className="py-16 px-6 bg-white">
         <div className="max-w-xl mx-auto text-center bg-earth-50 border border-earth-200 rounded-2xl p-10">
           <div className="text-4xl mb-4">📸</div>
-          <h3 className="font-display text-2xl font-bold text-gray-900 mb-3">
-            Know a hidden gem?
-          </h3>
-          <p className="font-body text-gray-600 text-sm">
-            Help us capture every beautiful corner of Madanur. Contact the admin to add a spot to this page.
-          </p>
+          <h3 className="font-display text-2xl font-bold text-gray-900 mb-3">{T.spots_cta_title}</h3>
+          <p className="font-body text-gray-600 text-sm">{T.spots_cta_body}</p>
         </div>
       </section>
 

@@ -6,10 +6,15 @@ import Navbar    from "../components/Navbar";
 import Footer    from "../components/Footer";
 import NewsCard  from "../components/NewsCard";
 import { heroImage, galleryImages } from "../assets/images";
+import { useLanguage } from "../context/LanguageContext";
+import { t } from "../assets/translations";
 
 export default function Home() {
   const { isAdmin } = useAuth();
   const { news, loading: newsLoading, deleteNews } = useNews();
+  const { lang } = useLanguage();
+  const T = t[lang];
+  const galleryLabels = [T.gallery_1,T.gallery_2,T.gallery_3,T.gallery_4,T.gallery_5,T.gallery_6];
 
   return (
     <div className="min-h-screen bg-earth-50 text-gray-900">
@@ -28,23 +33,23 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative text-center text-white px-6 max-w-4xl mx-auto">
           <p className="font-body uppercase tracking-[0.3em] text-amber-300 text-sm mb-4 animate-fade-in">
-            Welcome to
+            {T.hero_welcome}
           </p>
           <h1 className="font-display text-6xl sm:text-7xl md:text-8xl font-bold mb-6 animate-fade-up leading-tight">
-            Madanur Village
+            {T.hero_title}
           </h1>
           <p className="font-telugu text-white/70 text-lg mb-3 animate-fade-up" style={{ animationDelay: "0.15s" }}>
-            మదనర గరమ
+            {T.hero_telugu}
           </p>
           <p className="font-body text-white/80 text-lg md:text-xl max-w-2xl mx-auto mb-10 animate-fade-up leading-relaxed" style={{ animationDelay: "0.2s" }}>
-            A sacred land of ancient temples, vibrant festivals, and warm-hearted people nestled in the heart of tradition.
+            {T.hero_sub}
           </p>
           <Link
             to="/temple"
             className="inline-block bg-amber-600 hover:bg-amber-500 text-white font-body font-semibold px-9 py-3.5 rounded-full transition-all duration-300 hover:shadow-xl animate-fade-up text-sm tracking-wide"
             style={{ animationDelay: "0.3s" }}
           >
-            Explore Our Heritage
+            {T.hero_cta}
           </Link>
         </div>
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
@@ -57,12 +62,10 @@ export default function Home() {
       {/* ABOUT */}
       <section className="py-16 px-6 bg-white">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="font-body text-earth-500 text-xs uppercase tracking-[0.25em] mb-3">Our Home</p>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-gray-900 mb-6">Heart of Prakasam District</h2>
+          <p className="font-body text-earth-500 text-xs uppercase tracking-[0.25em] mb-3">{T.about_label}</p>
+          <h2 className="font-display text-3xl sm:text-4xl font-bold text-gray-900 mb-6">{T.about_title}</h2>
           <p className="font-body text-gray-600 text-base leading-relaxed max-w-2xl mx-auto">
-            Nestled in the fertile plains of Andhra Pradesh, Madanur is a village steeped in devotion, culture, and community.
-            Home to the ancient Sri RamaLingeswaraSwamy Temple and surrounded by lush agricultural fields,
-            our village carries centuries of heritage in every corner.
+            {T.about_body}
           </p>
         </div>
       </section>
@@ -71,15 +74,15 @@ export default function Home() {
       <section className="py-20 px-6 bg-earth-50">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-14">
-            <p className="font-body text-earth-500 text-xs uppercase tracking-[0.25em] mb-3">Discover</p>
-            <h2 className="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-4">What Makes Us Special</h2>
+            <p className="font-body text-earth-500 text-xs uppercase tracking-[0.25em] mb-3">{T.highlights_label}</p>
+            <h2 className="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-4">{T.highlights_title}</h2>
             <div className="w-16 h-0.5 bg-earth-500 mx-auto" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { icon: "", title: "Ancient Temple",  desc: "Sri RamaLingeswaraSwamy Temple — a 1000-year-old Shiva temple where Lord Rama is said to have offered prayers.", link: "/temple",     cta: "Visit Temple →" },
-              { icon: "", title: "Vibrant Festivals", desc: "From Shivaratri to harvest celebrations, our festivals bring the entire village together in joy and devotion.",   link: "/festivals",   cta: "See Festivals →" },
-              { icon: "", title: "Agriculture",      desc: "Paddy, groundnut, and chilli fields stretch across Madanur's fertile land, sustaining families for generations.",  link: "/businesses",  cta: "Local Businesses →" },
+              { icon: "", title: T.highlight_temple_title,  desc: T.highlight_temple_desc,  link: "/temple",    cta: T.highlight_temple_cta },
+              { icon: "", title: T.highlight_festival_title, desc: T.highlight_festival_desc, link: "/festivals",  cta: T.highlight_festival_cta },
+              { icon: "", title: T.highlight_agri_title,    desc: T.highlight_agri_desc,    link: "/businesses", cta: T.highlight_agri_cta },
             ].map(({ icon, title, desc, link, cta }) => (
               <div key={title} className="group bg-white border border-gray-200 hover:border-earth-300 rounded-2xl p-8 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                 <div className="text-5xl mb-5">{icon}</div>
@@ -98,10 +101,10 @@ export default function Home() {
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
-              { value: "~3,000", label: "Population",      icon: "" },
-              { value: "1000+",  label: "Years of History", icon: "" },
-              { value: "",      label: "Acres of Fields",  icon: "" },
-              { value: "100%",   label: "Village Pride",    icon: "" },
+              { value: "~3,000", label: T.stats_population, icon: "" },
+              { value: "1000+",  label: T.stats_history,    icon: "" },
+              { value: "",      label: T.stats_acres,      icon: "" },
+              { value: "100%",   label: T.stats_pride,      icon: "" },
             ].map(({ value, label, icon }) => (
               <div key={label} className="group">
                 <div className="text-3xl mb-2">{icon}</div>
@@ -117,12 +120,14 @@ export default function Home() {
       <section className="py-20 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-14">
-            <p className="font-body text-earth-500 text-xs uppercase tracking-[0.25em] mb-3">Memories</p>
-            <h2 className="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-4">Village Gallery</h2>
+            <p className="font-body text-earth-500 text-xs uppercase tracking-[0.25em] mb-3">{T.gallery_label}</p>
+            <h2 className="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-4">{T.gallery_title}</h2>
             <div className="w-16 h-0.5 bg-earth-500 mx-auto" />
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {galleryImages.map(({ src, label }, i) => (
+            {galleryImages.map(({ src }, i) => {
+              const label = galleryLabels[i] || "";
+              return (
               <div key={i} className="group relative overflow-hidden rounded-2xl aspect-square bg-earth-100 border border-earth-200 hover:border-earth-300 transition-all duration-300 hover:shadow-lg">
                 <img src={src} alt={label} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   onError={(e) => { e.target.style.display = "none"; e.target.nextSibling.style.display = "flex"; }} />
@@ -149,10 +154,10 @@ export default function Home() {
       <section className="py-20 px-6 bg-earth-50">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-14">
-            <p className="font-body text-earth-500 text-xs uppercase tracking-[0.25em] mb-3">Live Updates</p>
-            <h2 className="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-4">Village News</h2>
+            <p className="font-body text-earth-500 text-xs uppercase tracking-[0.25em] mb-3">{T.news_label}</p>
+            <h2 className="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-4">{T.news_title}</h2>
             <div className="w-16 h-0.5 bg-earth-500 mx-auto" />
-            <p className="font-body text-gray-600 mt-4 text-sm">Stay updated with the latest from Madanur — in real time.</p>
+            <p className="font-body text-gray-600 mt-4 text-sm">{T.news_sub}</p>
           </div>
           {newsLoading ? (
             <div className="flex flex-col items-center py-16 text-earth-400">
@@ -165,8 +170,8 @@ export default function Home() {
           ) : news.length === 0 ? (
             <div className="text-center py-16">
               <div className="text-5xl mb-4"></div>
-              <p className="font-display text-gray-400 text-xl italic">No news yet</p>
-              {isAdmin && <p className="font-body text-gray-500 text-sm mt-2">Post from the Admin panel.</p>}
+              <p className="font-display text-gray-400 text-xl italic">{T.news_empty}</p>
+              {isAdmin && <p className="font-body text-gray-500 text-sm mt-2">{T.news_admin_hint}</p>}
             </div>
           ) : (
             <div className="space-y-4">
