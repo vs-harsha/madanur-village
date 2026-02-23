@@ -50,7 +50,7 @@ export const t = {
     gallery_1: "Temple Festival",
     gallery_2: "Harvest Season",
     gallery_3: "Village Streets",
-    gallery_4: "Sunrise View",
+    gallery_4: "Beach View",
     gallery_5: "Community Gathering",
     gallery_6: "Fields of Madanur",
 
@@ -186,7 +186,7 @@ export const t = {
     gallery_1: "దేవాలయ పండుగ",
     gallery_2: "పంట కాలం",
     gallery_3: "గ్రామ వీధులు",
-    gallery_4: "సూర్యోదయ దృశ్యం",
+    gallery_4: "బీచ్ వ్యూ",
     gallery_5: "సమాజ సమావేశం",
     gallery_6: "మదనూరు పొలాలు",
 

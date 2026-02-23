@@ -14,7 +14,7 @@ export const galleryImages = [
   { src: "/images/gallery-1.png", label: "Temple Festival" },
   { src: "/images/gallery-2.png", label: "Harvest Season" },
   { src: "/images/gallery-3.png", label: "Village Streets" },
-  { src: "/images/gallery-4.png", label: "Sunrise View" },
+  { src: "/images/gallery-4.png", label: "Beach View" },
   { src: "/images/gallery-5.png", label: "Community Gathering" },
   { src: "/images/gallery-6.png", label: "Fields of Madanur" },
 ];
