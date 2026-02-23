@@ -8,7 +8,7 @@
  */
 
 // ─── HOME ────────────────────────────────────────────────────────────
-export const heroImage         = "/images/hero.jpg";
+export const heroImage         = "/images/hero.png";
 
 export const galleryImages = [
   { src: "/images/gallery-1.jpg", label: "Temple Festival" },
@@ -20,8 +20,8 @@ export const galleryImages = [
 ];
 
 // ─── TEMPLE ──────────────────────────────────────────────────────────
-export const templeHeroImage   = "/images/temple.jpg";
-export const templeMainImage   = "/images/temple.jpg";
+export const templeHeroImage   = "/images/temple.png";
+export const templeMainImage   = "/images/temple.png";
 
 export const templeGalleryImages = [
   "/images/temple-1.jpg",
