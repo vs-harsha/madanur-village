@@ -1,0 +1,8 @@
+{
+  "rules": {
+    "news": {
+      ".read": "auth != null",
+      ".write": "auth != null && auth.token.email === 'admin@madanur.com'"
+    }
+  }
+}
