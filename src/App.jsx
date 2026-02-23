@@ -17,10 +17,10 @@ export default function App() {
           <Route path="/login"  element={<Login />}  />
           <Route path="/signup" element={<Signup />} />
 
-          {/* Protected routes */}
-          <Route path="/" element={
-            <ProtectedRoute><Home /></ProtectedRoute>
-          } />
+          {/* Public home */}
+          <Route path="/" element={<Home />} />
+
+          {/* Admin only */}
           <Route path="/admin" element={
             <ProtectedRoute><Admin /></ProtectedRoute>
           } />

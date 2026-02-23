@@ -148,6 +148,16 @@ export default function Login() {
               Create an account
             </Link>
           </p>
+
+          {/* Guest access */}
+          <div className="mt-4 text-center">
+            <Link
+              to="/"
+              className="font-body text-earth-600 hover:text-earth-400 text-sm transition-colors"
+            >
+              👁️ Continue as Guest
+            </Link>
+          </div>
         </div>
 
         {/* Bottom tagline */}
