@@ -1,167 +1,125 @@
-// src/pages/Home.jsx
-import { useAuth }   from "../context/AuthContext";
-import { useNews }   from "../hooks/useNews";
-import Navbar        from "../components/Navbar";
-import Footer        from "../components/Footer";
-import SpotCard      from "../components/SpotCard";
-import NewsCard      from "../components/NewsCard";
-
-const SPOTS = [
-  {
-    emoji: "🛕",
-    title: "Sri RamaLingeswara Swamy Temple",
-    description:
-      "An ancient and revered Shiva temple at the heart of Madanur. The sacred abode of Lord RamaLingeswara resonates with centuries of devotion, intricate stone carvings, and the fragrance of jasmine and camphor during festival days.",
-  },
-  {
-    emoji: "🌾",
-    title: "Green Agricultural Fields",
-    description:
-      "Stretching endlessly under the Andhra sky, Madanur's fertile farmlands yield rich harvests of paddy, groundnut, and chilli. The shimmer of green through every season is the lifeblood and legacy of our farming community.",
-  },
-  {
-    emoji: "🌅",
-    title: "Sunrise Landscape",
-    description:
-      "As dawn breaks over the Eastern Ghats, golden light floods Madanur's fields and rooftops. The sunrise here — painted in amber, saffron, and rose — is a daily miracle that reminds us why we call this place home.",
-  },
-];
+﻿// src/pages/Home.jsx
+import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import { useNews } from "../hooks/useNews";
+import Navbar    from "../components/Navbar";
+import Footer    from "../components/Footer";
+import NewsCard  from "../components/NewsCard";
 
 export default function Home() {
-  const { user, isAdmin }       = useAuth();
+  const { isAdmin } = useAuth();
   const { news, loading: newsLoading, deleteNews } = useNews();
 
   return (
     <div className="min-h-screen bg-earth-950 text-earth-100">
       <Navbar />
 
-      {/* ─── HERO ─── */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-6">
-        {/* Animated background */}
-        <div className="absolute inset-0">
-          {/* Gradient base */}
-          <div className="absolute inset-0 bg-gradient-to-br from-earth-950 via-earth-900 to-earth-950" />
-
-          {/* Glowing orbs */}
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-earth-600/20 rounded-full blur-3xl animate-float" />
-          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-amber-800/15 rounded-full blur-3xl animate-float" style={{ animationDelay: "2.5s" }} />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-earth-700/10 rounded-full blur-3xl" />
-
-          {/* Dot pattern */}
-          <div className="absolute inset-0 opacity-[0.04]" style={{
-            backgroundImage: "radial-gradient(circle, #82b84e 1px, transparent 1px)",
-            backgroundSize: "56px 56px"
-          }} />
-
-          {/* Top decorative line */}
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-earth-600/50 to-transparent" />
-        </div>
-
-        <div className="relative text-center max-w-4xl mx-auto">
-          {/* Pre-title badge */}
-          <div className="inline-flex items-center gap-2 bg-earth-800/60 border border-earth-700/50 rounded-full px-5 py-2 mb-8 animate-fade-in backdrop-blur-sm">
-            <span className="w-2 h-2 rounded-full bg-earth-400 animate-pulse" />
-            <span className="font-body text-earth-400 text-xs tracking-[0.2em] uppercase">Prakasam District • Andhra Pradesh</span>
-          </div>
-
-          {/* Main title */}
-          <h1 className="font-display text-6xl sm:text-7xl md:text-8xl font-bold text-earth-50 mb-2 animate-fade-up leading-tight">
+      {/* HERO */}
+      <section
+        className="relative min-h-screen flex items-center justify-center overflow-hidden"
+        style={{
+          backgroundImage: "url('/images/hero.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundColor: "#4a2800",
+        }}
+      >
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="relative text-center text-white px-6 max-w-4xl mx-auto">
+          <p className="font-body uppercase tracking-[0.3em] text-amber-300 text-sm mb-4 animate-fade-in">
             Welcome to
-          </h1>
-          <h1 className="font-display text-6xl sm:text-7xl md:text-8xl font-bold mb-6 animate-fade-up leading-tight"
-              style={{ animationDelay: "0.1s" }}>
-            <span className="bg-gradient-to-r from-earth-400 via-earth-300 to-amber-400 bg-clip-text text-transparent">
-              Madanur
-            </span>
-          </h1>
-
-          {/* Telugu subtitle */}
-          <p className="font-telugu text-earth-500 text-lg mb-2 animate-fade-up" style={{ animationDelay: "0.2s" }}>
-            మదనూరు గ్రామం
           </p>
-
-          {/* English subtitle */}
-          <p className="font-display italic text-earth-400 text-xl sm:text-2xl mb-10 animate-fade-up" style={{ animationDelay: "0.25s" }}>
-            Our Village <span className="text-earth-600">•</span> Our Pride
+          <h1 className="font-display text-6xl sm:text-7xl md:text-8xl font-bold mb-6 animate-fade-up leading-tight">
+            Madanur Village
+          </h1>
+          <p className="font-telugu text-white/70 text-lg mb-3 animate-fade-up" style={{ animationDelay: "0.15s" }}>
+            మదనర గరమ
           </p>
-
-          {/* Welcome message */}
-          {user && (
-            <div className="inline-flex items-center gap-3 bg-earth-800/40 border border-earth-700/40 backdrop-blur-sm rounded-2xl px-6 py-3 mb-10 animate-fade-up" style={{ animationDelay: "0.35s" }}>
-              <span className="text-lg">👋</span>
-              <span className="font-body text-earth-300 text-sm">
-                Welcome back, <strong className="text-earth-100">{user.displayName || "villager"}</strong>!
-              </span>
-            </div>
-          )}
-
-          {/* Scroll cue */}
-          <div className="animate-bounce mt-4" style={{ animationDelay: "1s" }}>
-            <svg className="w-6 h-6 text-earth-600 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
-            </svg>
-          </div>
+          <p className="font-body text-white/80 text-lg md:text-xl max-w-2xl mx-auto mb-10 animate-fade-up leading-relaxed" style={{ animationDelay: "0.2s" }}>
+            A sacred land of ancient temples, vibrant festivals, and warm-hearted people nestled in the heart of tradition.
+          </p>
+          <Link
+            to="/temple"
+            className="inline-block bg-amber-600 hover:bg-amber-500 text-white font-body font-semibold px-9 py-3.5 rounded-full transition-all duration-300 hover:shadow-xl animate-fade-up text-sm tracking-wide"
+            style={{ animationDelay: "0.3s" }}
+          >
+            Explore Our Heritage
+          </Link>
+        </div>
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+          <svg className="w-6 h-6 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
+          </svg>
         </div>
       </section>
 
-      {/* ─── BEAUTIFUL SPOTS ─── */}
-      <section className="relative py-20 px-6">
+      {/* ABOUT */}
+      <section className="py-16 px-6 bg-earth-900">
+        <div className="max-w-4xl mx-auto text-center">
+          <p className="font-body text-earth-400 text-xs uppercase tracking-[0.25em] mb-3">Our Home</p>
+          <h2 className="font-display text-3xl sm:text-4xl font-bold text-earth-50 mb-6">Heart of Prakasam District</h2>
+          <p className="font-body text-earth-300 text-base leading-relaxed max-w-2xl mx-auto">
+            Nestled in the fertile plains of Andhra Pradesh, Madanur is a village steeped in devotion, culture, and community.
+            Home to the ancient Sri RamaLingeswaraSwamy Temple and surrounded by lush agricultural fields,
+            our village carries centuries of heritage in every corner.
+          </p>
+        </div>
+      </section>
+
+      {/* HIGHLIGHTS */}
+      <section className="py-20 px-6 bg-earth-950">
         <div className="max-w-6xl mx-auto">
-          {/* Section header */}
           <div className="text-center mb-14">
-            <p className="font-body text-earth-500 text-xs uppercase tracking-[0.25em] mb-3">Explore</p>
-            <h2 className="font-display text-4xl sm:text-5xl font-bold text-earth-100 mb-4">
-              Beautiful Spots
-            </h2>
-            <div className="w-16 h-0.5 bg-gradient-to-r from-earth-600 to-amber-500 mx-auto" />
-            <p className="font-body text-earth-500 mt-4 max-w-md mx-auto text-sm leading-relaxed">
-              From sacred temples to golden fields — discover what makes Madanur unforgettable.
-            </p>
+            <p className="font-body text-earth-400 text-xs uppercase tracking-[0.25em] mb-3">Discover</p>
+            <h2 className="font-display text-4xl sm:text-5xl font-bold text-earth-50 mb-4">What Makes Us Special</h2>
+            <div className="w-16 h-0.5 bg-gradient-to-r from-earth-400 to-amber-500 mx-auto" />
           </div>
-
-          {/* Cards grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {SPOTS.map((spot, i) => (
-              <SpotCard key={spot.title} {...spot} delay={i * 150} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ─── STATS STRIP ─── */}
-      <section className="py-14 px-6 border-y border-earth-800/40 bg-earth-900/20">
-        <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
-              { value: "~3,000",   label: "Population",       icon: "👥" },
-              { value: "1",        label: "Ancient Temple",   icon: "🛕" },
-              { value: "∞",        label: "Acres of Fields",  icon: "🌾" },
-              { value: "100%",     label: "Village Pride",    icon: "�" },
-            ].map(({ value, label, icon }) => (
-              <div key={label} className="group">
-                <div className="text-3xl mb-2">{icon}</div>
-                <p className="font-display text-3xl font-bold text-earth-200 group-hover:text-earth-100 transition-colors">{value}</p>
-                <p className="font-body text-earth-500 text-xs uppercase tracking-widest mt-1">{label}</p>
+              { icon: "", title: "Ancient Temple",  desc: "Sri RamaLingeswaraSwamy Temple — a 1000-year-old Shiva temple where Lord Rama is said to have offered prayers.", link: "/temple",     cta: "Visit Temple " },
+              { icon: "", title: "Vibrant Festivals", desc: "From Shivaratri to harvest celebrations, our festivals bring the entire village together in joy and devotion.",   link: "/festivals",   cta: "See Festivals " },
+              { icon: "", title: "Agriculture",      desc: "Paddy, groundnut, and chilli fields stretch across Madanur's fertile land, sustaining families for generations.",  link: "/businesses",  cta: "Local Businesses " },
+            ].map(({ icon, title, desc, link, cta }) => (
+              <div key={title} className="group bg-earth-900/80 border border-earth-800/50 hover:border-earth-600/60 rounded-2xl p-8 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <div className="text-5xl mb-5">{icon}</div>
+                <h3 className="font-display text-xl font-semibold text-earth-50 mb-3">{title}</h3>
+                <div className="w-10 h-0.5 bg-gradient-to-r from-earth-400 to-amber-500 mb-4" />
+                <p className="font-body text-earth-300 text-sm leading-relaxed mb-5">{desc}</p>
+                <Link to={link} className="font-body text-earth-400 text-sm font-semibold hover:text-earth-300 transition-colors">{cta}</Link>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ─── PHOTO GALLERY ─── */}
-      <section className="py-20 px-6 bg-earth-900/10">
+      {/* STATS */}
+      <section className="py-14 px-6 border-y border-earth-800/40 bg-earth-900/40">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            {[
+              { value: "~3,000", label: "Population",      icon: "" },
+              { value: "1000+",  label: "Years of History", icon: "" },
+              { value: "",      label: "Acres of Fields",  icon: "" },
+              { value: "100%",   label: "Village Pride",    icon: "" },
+            ].map(({ value, label, icon }) => (
+              <div key={label} className="group">
+                <div className="text-3xl mb-2">{icon}</div>
+                <p className="font-display text-3xl font-bold text-earth-50 group-hover:text-earth-400 transition-colors">{value}</p>
+                <p className="font-body text-earth-400 text-xs uppercase tracking-widest mt-1">{label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* GALLERY */}
+      <section className="py-20 px-6 bg-earth-950">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-14">
-            <p className="font-body text-earth-500 text-xs uppercase tracking-[0.25em] mb-3">Memories</p>
-            <h2 className="font-display text-4xl sm:text-5xl font-bold text-earth-100 mb-4">
-              Village Gallery
-            </h2>
-            <div className="w-16 h-0.5 bg-gradient-to-r from-earth-600 to-amber-500 mx-auto" />
-            <p className="font-body text-earth-500 mt-4 text-sm max-w-md mx-auto">
-              A glimpse into the life, culture, and beauty of Madanur.
-            </p>
+            <p className="font-body text-earth-400 text-xs uppercase tracking-[0.25em] mb-3">Memories</p>
+            <h2 className="font-display text-4xl sm:text-5xl font-bold text-earth-50 mb-4">Village Gallery</h2>
+            <div className="w-16 h-0.5 bg-gradient-to-r from-earth-400 to-amber-500 mx-auto" />
           </div>
-
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {[
               { src: "/images/gallery-1.jpg", label: "Temple Festival" },
@@ -171,54 +129,39 @@ export default function Home() {
               { src: "/images/gallery-5.jpg", label: "Community Gathering" },
               { src: "/images/gallery-6.jpg", label: "Fields of Madanur" },
             ].map(({ src, label }, i) => (
-              <div key={i} className="group relative overflow-hidden rounded-2xl aspect-square bg-earth-900/60 border border-earth-700/40 hover:border-earth-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-earth-900/50">
-                <img
-                  src={src}
-                  alt={label}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
-                />
-                {/* Placeholder shown when image missing */}
-                <div className="absolute inset-0 hidden flex-col items-center justify-center gap-3 bg-earth-900/60">
-                  <span className="text-4xl opacity-30">🖼️</span>
-                  <p className="font-body text-earth-600 text-xs text-center px-4">{label}</p>
-                  {isAdmin && (
-                    <p className="font-body text-earth-700 text-xs text-center px-4">Add <code className="text-earth-600">public/images/gallery-{i+1}.jpg</code></p>
-                  )}
+              <div key={i} className="group relative overflow-hidden rounded-2xl aspect-square bg-earth-900 border border-earth-800/40 hover:border-earth-600/50 transition-all duration-300 hover:shadow-xl">
+                <img src={src} alt={label} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  onError={(e) => { e.target.style.display = "none"; e.target.nextSibling.style.display = "flex"; }} />
+                <div className="absolute inset-0 hidden flex-col items-center justify-center gap-2 bg-earth-900/80">
+                  <span className="text-4xl opacity-30"></span>
+                  <p className="font-body text-earth-400 text-xs text-center px-4">{label}</p>
+                  {isAdmin && <p className="font-body text-earth-600 text-xs">Add public/images/gallery-{i+1}.jpg</p>}
                 </div>
-                {/* Label overlay */}
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-earth-950/90 to-transparent p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                  <p className="font-body text-earth-200 text-sm font-semibold">{label}</p>
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                  <p className="font-body text-white text-sm font-semibold">{label}</p>
                 </div>
               </div>
             ))}
           </div>
-
           {isAdmin && (
-            <p className="text-center font-body text-earth-700 text-xs mt-8">
-              💡 To add photos: put images named <code className="text-earth-600">gallery-1.jpg</code> through <code className="text-earth-600">gallery-6.jpg</code> in the <code className="text-earth-600">public/images/</code> folder, then push to GitHub.
+            <p className="text-center font-body text-earth-600 text-xs mt-8">
+               Add photos: put gallery-1.jpg to gallery-6.jpg in public/images/ then git push
             </p>
           )}
         </div>
       </section>
 
-      {/* ─── NEWS SECTION ─── */}
-      <section className="py-20 px-6">
+      {/* NEWS */}
+      <section className="py-20 px-6 bg-earth-900/30">
         <div className="max-w-4xl mx-auto">
-          {/* Section header */}
           <div className="text-center mb-14">
-            <p className="font-body text-earth-500 text-xs uppercase tracking-[0.25em] mb-3">Live Updates</p>
-            <h2 className="font-display text-4xl sm:text-5xl font-bold text-earth-100 mb-4">
-              Village News
-            </h2>
-            <div className="w-16 h-0.5 bg-gradient-to-r from-earth-600 to-amber-500 mx-auto" />
-            <p className="font-body text-earth-500 mt-4 text-sm">
-              Stay updated with the latest from Madanur — in real time.
-            </p>
+            <p className="font-body text-earth-400 text-xs uppercase tracking-[0.25em] mb-3">Live Updates</p>
+            <h2 className="font-display text-4xl sm:text-5xl font-bold text-earth-50 mb-4">Village News</h2>
+            <div className="w-16 h-0.5 bg-gradient-to-r from-earth-400 to-amber-500 mx-auto" />
+            <p className="font-body text-earth-400 mt-4 text-sm">Stay updated with the latest from Madanur — in real time.</p>
           </div>
-
           {newsLoading ? (
-            <div className="flex flex-col items-center py-16 text-earth-600">
+            <div className="flex flex-col items-center py-16 text-earth-400">
               <svg className="animate-spin h-8 w-8 mb-4" viewBox="0 0 24 24">
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
@@ -227,19 +170,13 @@ export default function Home() {
             </div>
           ) : news.length === 0 ? (
             <div className="text-center py-16">
-              <div className="text-5xl mb-4">📰</div>
-              <p className="font-display text-earth-500 text-xl italic">No news yet</p>
-              {isAdmin && (
-                <p className="font-body text-earth-600 text-sm mt-2">
-                  Head to the Admin panel to post your first update!
-                </p>
-              )}
+              <div className="text-5xl mb-4"></div>
+              <p className="font-display text-earth-400 text-xl italic">No news yet</p>
+              {isAdmin && <p className="font-body text-earth-500 text-sm mt-2">Post from the Admin panel.</p>}
             </div>
           ) : (
             <div className="space-y-4">
-              {news.map((item) => (
-                <NewsCard key={item.id} item={item} onDelete={deleteNews} />
-              ))}
+              {news.map((item) => <NewsCard key={item.id} item={item} onDelete={deleteNews} />)}
             </div>
           )}
         </div>

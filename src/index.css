@@ -14,7 +14,7 @@
   }
 
   ::selection {
-    @apply bg-earth-600/50 text-earth-50;
+    @apply bg-earth-400/30 text-earth-50;
   }
 
   /* Custom scrollbar */
@@ -23,7 +23,7 @@
     height: 6px;
   }
   ::-webkit-scrollbar-track {
-    @apply bg-earth-950;
+    @apply bg-earth-900;
   }
   ::-webkit-scrollbar-thumb {
     @apply bg-earth-700 rounded-full;
