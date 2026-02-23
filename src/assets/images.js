@@ -46,4 +46,4 @@ export const spotImages = [
 export const historyHeroImage  = "/images/history-hero.jpg";
 
 // ─── FESTIVALS ───────────────────────────────────────────────────────
-export const festivalsHeroImage = "/images/festivals-hero.jpg";
+export const festivalsHeroImage = "/images/festival-1.jpg";
