@@ -33,8 +33,7 @@ export function AuthProvider({ children }) {
 
   const logout = () => signOut(auth);
 
-  const isAdmin =
-    user?.email === import.meta.env.VITE_ADMIN_EMAIL;
+  const isAdmin = user?.email === "harshareddy4335@gmail.com";
 
   return (
     <AuthContext.Provider value={{ user, loading, login, signup, logout, isAdmin }}>
