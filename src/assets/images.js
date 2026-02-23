@@ -8,19 +8,19 @@
  */
 
 // ─── HOME ────────────────────────────────────────────────────────────
-export const heroImage         = "public/images/hero.jpg";
+export const heroImage         = "/images/hero.jpg";
 
 export const galleryImages = [
-  { src: "public/images/gallery-1.jpg", label: "Temple Festival" },
-  { src: "public/images/gallery-2.jpg", label: "Harvest Season" },
-  { src: "public/images/gallery-3.jpg", label: "Village Streets" },
+  { src: "/images/gallery-1.jpg", label: "Temple Festival" },
+  { src: "/images/gallery-2.jpg", label: "Harvest Season" },
+  { src: "/images/gallery-3.jpg", label: "Village Streets" },
   { src: "/images/gallery-4.jpg", label: "Sunrise View" },
   { src: "/images/gallery-5.jpg", label: "Community Gathering" },
   { src: "/images/gallery-6.jpg", label: "Fields of Madanur" },
 ];
 
 // ─── TEMPLE ──────────────────────────────────────────────────────────
-export const templeHeroImage   = "/images/temple-hero.jpg";
+export const templeHeroImage   = "/images/temple.jpg";
 export const templeMainImage   = "/images/temple.jpg";
 
 export const templeGalleryImages = [
