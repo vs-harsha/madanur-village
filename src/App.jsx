@@ -13,6 +13,7 @@ import Festivals  from "./pages/Festivals";
 import Businesses from "./pages/Businesses";
 import Spots      from "./pages/Spots";
 import History    from "./pages/History";
+import Feedback   from "./pages/Feedback";
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
           <Route path="/history"    element={<History />}    />
           <Route path="/festivals"  element={<Festivals />}  />
           <Route path="/businesses" element={<Businesses />} />
+          <Route path="/feedback"   element={<Feedback />}   />
           <Route path="/admin"      element={<ProtectedRoute><Admin /></ProtectedRoute>} />
           <Route path="*"           element={<Navigate to="/" replace />} />
         </Routes>

@@ -3,6 +3,7 @@ import { useState }  from "react";
 import { Navigate }  from "react-router-dom";
 import { useAuth }   from "../context/AuthContext";
 import { useNews }   from "../hooks/useNews";
+import { useFeedback } from "../hooks/useFeedback";
 import Navbar        from "../components/Navbar";
 import Footer        from "../components/Footer";
 import NewsCard      from "../components/NewsCard";
@@ -12,6 +13,7 @@ const CATEGORIES = ["General", "Event", "Announcement", "Agriculture"];
 export default function Admin() {
   const { isAdmin }               = useAuth();
   const { news, addNews, deleteNews, loading } = useNews();
+  const { feedbacks, loading: fbLoading, deleteFeedback } = useFeedback();
 
   const [title,    setTitle]    = useState("");
   const [body,     setBody]     = useState("");
@@ -166,6 +168,55 @@ export default function Admin() {
               </div>
             )}
           </div>
+        </div>
+
+        {/* ─── FEEDBACK SECTION ─── */}
+        <div className="mt-16">
+          <h2 className="font-display text-2xl font-semibold text-earth-100 mb-6 flex items-center gap-2">
+            <span>💬</span> Community Feedback
+            <span className="ml-auto bg-earth-800 text-earth-400 text-xs font-body px-3 py-1 rounded-full">
+              {feedbacks.length} total
+            </span>
+          </h2>
+
+          {fbLoading ? (
+            <p className="font-body text-earth-600 text-sm">Loading...</p>
+          ) : feedbacks.length === 0 ? (
+            <div className="text-center py-12 border border-earth-800/40 rounded-2xl">
+              <div className="text-4xl mb-3">💬</div>
+              <p className="font-display text-earth-600 italic">No feedback submitted yet.</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {feedbacks.map((fb) => (
+                <div key={fb.id} className="bg-earth-900/50 border border-earth-700/40 rounded-2xl p-5 flex flex-col gap-3">
+                  <div className="flex items-start justify-between gap-2">
+                    <div>
+                      <p className="font-body font-semibold text-earth-100 text-sm">{fb.name}</p>
+                      {fb.rating > 0 && (
+                        <p className="text-amber-400 text-sm leading-none mt-0.5">
+                          {'★'.repeat(fb.rating)}{'☆'.repeat(5 - fb.rating)}
+                        </p>
+                      )}
+                    </div>
+                    <button
+                      onClick={() => deleteFeedback(fb.id)}
+                      className="text-earth-600 hover:text-red-400 transition-colors text-lg leading-none flex-shrink-0"
+                      title="Delete feedback"
+                    >
+                      ×
+                    </button>
+                  </div>
+                  <p className="font-body text-earth-400 text-sm leading-relaxed flex-1">{fb.message}</p>
+                  {fb.createdAt && (
+                    <p className="font-body text-earth-700 text-xs">
+                      {new Date(fb.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 

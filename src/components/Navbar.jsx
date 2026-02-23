@@ -50,6 +50,7 @@ export default function Navbar() {
             {navLink("/history",    T.nav_history)}
             {navLink("/festivals",  T.nav_festivals)}
             {navLink("/businesses", T.nav_businesses)}
+            {navLink("/feedback",   T.nav_feedback)}
           </div>
 
           {/* Auth + Language area */}
@@ -107,6 +108,7 @@ export default function Navbar() {
             {navLink("/history",    T.nav_history)}
             {navLink("/festivals",  T.nav_festivals)}
             {navLink("/businesses", T.nav_businesses)}
+            {navLink("/feedback",   T.nav_feedback)}
             {/* Language toggle mobile */}
             <button
               onClick={toggle}

@@ -132,6 +132,22 @@ export const t = {
     business_4_name: "Local Tiffin Centers",       business_4_cat: "Food",
     business_5_name: "Building Materials",         business_5_cat: "Construction",
 
+    // ─── FEEDBACK ─────────────────────────────────────────────────────
+    nav_feedback:              "Feedback",
+    feedback_badge:            "Community Voice",
+    feedback_title:            "Share Your Feedback",
+    feedback_sub:              "We'd love to hear from you — your thoughts help us make Madanur better for everyone.",
+    feedback_name_label:       "Your Name",
+    feedback_name_placeholder: "Enter your name",
+    feedback_rating_label:     "Rating (optional)",
+    feedback_msg_label:        "Your Message",
+    feedback_msg_placeholder:  "Write your feedback here...",
+    feedback_submit:           "Submit Feedback",
+    feedback_submitting:       "Submitting...",
+    feedback_success:          "Thank you! Your feedback has been submitted.",
+    feedback_error:            "Failed to submit. Please try again.",
+    feedback_error_fields:     "Please fill in your name and message.",
+
     // ─── FOOTER ───────────────────────────────────────────────────────
     footer_explore: "Explore",
     footer_info:    "Village Info",
@@ -267,6 +283,22 @@ export const t = {
     business_3_name: "గ్రామ సాధారణ దుకాణాలు", business_3_cat: "రిటైల్",
     business_4_name: "స్థానిక టిఫిన్ సెంటర్లు", business_4_cat: "ఆహారం",
     business_5_name: "నిర్మాణ సామగ్రి",         business_5_cat: "నిర్మాణం",
+
+    // ─── FEEDBACK ─────────────────────────────────────────────────────
+    nav_feedback:              "అభిప్రాయం",
+    feedback_badge:            "సమాజ స్వరం",
+    feedback_title:            "మీ అభిప్రాయం తెలపండి",
+    feedback_sub:              "మీ అభిప్రాయాలు మదనూరును మెరుగుపరచడంలో సహాయపడతాయి.",
+    feedback_name_label:       "మీ పేరు",
+    feedback_name_placeholder: "మీ పేరు నమోదు చేయండి",
+    feedback_rating_label:     "రేటింగ్ (ఐచ్ఛికం)",
+    feedback_msg_label:        "మీ సందేశం",
+    feedback_msg_placeholder:  "మీ అభిప్రాయాన్ని ఇక్కడ రాయండి...",
+    feedback_submit:           "అభిప్రాయం పంపండి",
+    feedback_submitting:       "పంపుతున్నాము...",
+    feedback_success:          "ధన్యవాదాలు! మీ అభిప్రాయం స్వీకరించబడింది.",
+    feedback_error:            "సమర్పణ విఫలమైంది. దయచేసి మళ్ళీ ప్రయత్నించండి.",
+    feedback_error_fields:     "దయచేసి మీ పేరు మరియు సందేశం నమోదు చేయండి.",
 
     // ─── FOOTER ───────────────────────────────────────────────────────
     footer_explore: "అన్వేషించండి",
