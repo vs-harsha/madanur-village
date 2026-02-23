@@ -24,10 +24,10 @@ export const templeHeroImage   = "/images/temple.png";
 export const templeMainImage   = "/images/temple.png";
 
 export const templeGalleryImages = [
-  "/images/temple-1.png",
-  "/images/temple-2.jpg",
-  "/images/temple-3.jpg",
-  "/images/temple-4.jpg",
+  { src: "/images/temple-1.png",  label: "Poleramma Talli Temple" },
+  { src: "/images/temple-2.jpeg", label: "Anjaneya Swamy Temple" },
+  { src: "/images/temple-3.png",  label: "SaiBaba Temple" },
+  { src: "/images/temple-4.png",  label: "Ramalayam Temple" },
 ];
 
 // ─── SPOTS ───────────────────────────────────────────────────────────

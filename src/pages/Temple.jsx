@@ -95,23 +95,23 @@ export default function Temple() {
         <div className="max-w-6xl mx-auto">
           <h3 className="font-display text-2xl font-bold text-gray-900 mb-6">{T.temple_gallery_title}</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {templeGalleryImages.map((src, i) => (
+            {templeGalleryImages.map(({ src, label }, i) => (
               <div key={i} className="group relative overflow-hidden rounded-xl aspect-square bg-earth-100 border border-earth-200">
                 <img
                   src={src}
-                  alt={`Temple photo ${i + 1}`}
+                  alt={label}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   onError={(e) => { e.target.style.display = "none"; e.target.nextSibling.style.display = "flex"; }}
                 />
                 <div className="absolute inset-0 hidden items-center justify-center bg-earth-100">
                   <span className="text-3xl opacity-30">🛕</span>
                 </div>
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                  <p className="font-body text-white text-xs font-semibold">{label}</p>
+                </div>
               </div>
             ))}
           </div>
-          <p className="font-body text-gray-400 text-xs mt-4 text-center">
-            Add temple-1.jpg to temple-4.jpg in public/images/ to populate this gallery
-          </p>
         </div>
       </section>
 
