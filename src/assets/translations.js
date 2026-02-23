@@ -137,6 +137,7 @@ export const t = {
     footer_info:    "Village Info",
     footer_address: "Madanur, Kandukur Mandal",
     footer_pin:     "Prakasam District, AP — 523 105",
+    footer_follow:  "Follow us on Instagram",
     footer_copy:    `© ${new Date().getFullYear()} Madanur Village. Made with 🧡 for our community.`,
   },
 
@@ -272,6 +273,7 @@ export const t = {
     footer_info:    "గ్రామ సమాచారం",
     footer_address: "మదనూరు, కందుకూరు మండలం",
     footer_pin:     "ప్రకాశం జిల్లా, ఆంధ్రప్రదేశ్ — 523 105",
+    footer_follow:  "ఇన్‌స్టాగ్రామ్‌లో ఫాలో చేయండి",
     footer_copy:    `© ${new Date().getFullYear()} మదనూరు గ్రామం. మా సమాజం కోసం 🧡 తో తయారు చేయబడింది.`,
   },
 };
