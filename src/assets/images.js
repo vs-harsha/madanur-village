@@ -11,7 +11,7 @@
 export const heroImage         = "/images/hero.png";
 
 export const galleryImages = [
-  { src: "/images/gallery-1.jpg", label: "Temple Festival" },
+  { src: "/images/gallery-1.png", label: "Temple Festival" },
   { src: "/images/gallery-2.jpg", label: "Harvest Season" },
   { src: "/images/gallery-3.jpg", label: "Village Streets" },
   { src: "/images/gallery-4.jpg", label: "Sunrise View" },
