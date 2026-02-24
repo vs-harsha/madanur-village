@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { LanguageProvider } from "./context/LanguageContext";
 import ProtectedRoute   from "./components/ProtectedRoute";
+import ScrollToTop      from "./components/ScrollToTop";
 
 import Login      from "./pages/Login";
 import Signup     from "./pages/Signup";
@@ -18,6 +19,7 @@ import Feedback   from "./pages/Feedback";
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <LanguageProvider>
         <AuthProvider>
         <Routes>
