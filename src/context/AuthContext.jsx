@@ -33,7 +33,7 @@ export function AuthProvider({ children }) {
 
   const logout = () => signOut(auth);
 
-  const isAdmin = user?.email === "harshareddy4335@gmail.com";
+  const isAdmin = user?.email === "harshareddy7995133566@gmail.com";
 
   return (
     <AuthContext.Provider value={{ user, loading, login, signup, logout, isAdmin }}>
