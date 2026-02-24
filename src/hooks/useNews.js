@@ -9,18 +9,26 @@ export function useNews() {
 
   useEffect(() => {
     const newsRef = ref(db, "news");
-    const unsub = onValue(newsRef, (snapshot) => {
-      const data = snapshot.val();
-      if (data) {
-        const list = Object.entries(data)
-          .map(([id, val]) => ({ id, ...val }))
-          .sort((a, b) => b.createdAt - a.createdAt);
-        setNews(list);
-      } else {
+    const unsub = onValue(
+      newsRef,
+      (snapshot) => {
+        const data = snapshot.val();
+        if (data) {
+          const list = Object.entries(data)
+            .map(([id, val]) => ({ id, ...val }))
+            .sort((a, b) => b.createdAt - a.createdAt);
+          setNews(list);
+        } else {
+          setNews([]);
+        }
+        setLoading(false);
+      },
+      (error) => {
+        console.error("News read error:", error.message);
         setNews([]);
+        setLoading(false);
       }
-      setLoading(false);
-    });
+    );
     return () => unsub();
   }, []);
 

@@ -1,8 +1,8 @@
 {
   "rules": {
     "news": {
-      ".read": "auth != null",
-      ".write": "auth != null && auth.token.email === 'admin@madanur.com'"
+      ".read": true,
+      ".write": "auth != null && auth.token.email === 'harshareddy7995133566@gmail.com'"
     }
   }
 }
