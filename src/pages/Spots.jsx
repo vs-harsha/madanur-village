@@ -10,12 +10,12 @@ export default function Spots() {
   const T = t[lang];
 
   const spots = [
-    { src: "/images/spot-1.jpg", label: T.spot_1_label, desc: T.spot_1_desc },
-    { src: "/images/spot-2.jpg", label: T.spot_2_label, desc: T.spot_2_desc },
-    { src: "/images/spot-3.jpg", label: T.spot_3_label, desc: T.spot_3_desc },
-    { src: "/images/spot-4.jpg", label: T.spot_4_label, desc: T.spot_4_desc },
-    { src: "/images/spot-5.jpg", label: T.spot_5_label, desc: T.spot_5_desc },
-    { src: "/images/spot-6.jpg", label: T.spot_6_label, desc: T.spot_6_desc },
+    { src: "/images/spot-1.png", label: T.spot_1_label, desc: T.spot_1_desc },
+    { src: "/images/spot-2.png", label: T.spot_2_label, desc: T.spot_2_desc },
+    { src: "/images/spot-3.png", label: T.spot_3_label, desc: T.spot_3_desc },
+    { src: "/images/spot-4.png", label: T.spot_4_label, desc: T.spot_4_desc },
+    { src: "/images/spot-5.png", label: T.spot_5_label, desc: T.spot_5_desc },
+    { src: "/images/spot-6.png", label: T.spot_6_label, desc: T.spot_6_desc },
   ];
 
   return (
@@ -72,7 +72,7 @@ export default function Spots() {
                   <div className="absolute inset-0 hidden flex-col items-center justify-center gap-2 bg-earth-100">
                     <span className="text-5xl opacity-30">🌿</span>
                     <p className="font-body text-earth-400 text-xs text-center px-4">
-                      Add public/images/spot-{i + 1}.jpg
+                      Add public/images/spot-{i + 1}.png
                     </p>
                   </div>
                 </div>
